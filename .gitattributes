@@ -1,0 +1,28 @@
+* text=auto
+
+# Use Unix style line-endings
+text eol=lf
+
+# Keep newer package-lock.json when merging
+package.lock.json merge=ours
+
+# Source code is compared as text in PRs
+*.ts text
+*.js text
+*.json text
+
+# Binary files not compared in PRs
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.gif binary
+*.webm binary
+*.webp binary
+*.mp4 binary
+*.pdf binary
+
+# Prevent compiled files from showing up in github stats
+dist/**/* linguist-vendored
+node_modules/**/* linguist-vendored
+coverage/**/* linguist-vendored
+documentation/**/* linguist-vendored

@@ -1,0 +1,12 @@
+--require test/environment.ts
+--require ts-node/register
+--recursive
+--colors
+--timeout 500
+--async-only
+--inline-diffs
+--full-trace
+--ui bdd
+--project tsconfig.json
+--watch-extensions ts
+src/**/*.spec.ts

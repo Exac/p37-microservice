@@ -1,0 +1,15 @@
+# Typings for config files are auto-generated post install.
+config/Config.d.ts
+
+# Ignore libraries.
+node_modules/
+
+# Ignore editor configuration
+.idea/
+
+# Ignore MacOSX filesystem helpers
+**/.DS_Store
+
+# Ignore NYC coverage output
+coverage/
+.nyc_output/

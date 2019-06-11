@@ -1,0 +1,13 @@
+{
+  "MICROSERVICE": {
+    "MODE": "LOGIN",
+    "HOST": "localhost",
+    "PORT": 8080
+  },
+  "FRONTEND": {
+    "PORT": 80
+  },
+  "LOGIN": {
+    "PORT": 8080
+  }
+}
