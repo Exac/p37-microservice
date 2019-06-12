@@ -21,4 +21,4 @@ deploy:
       branch: master
 
 after_success:
-  - npm run coveralls
+  - npm run test:coveralls
