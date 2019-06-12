@@ -29,7 +29,7 @@ describe('index', () => {
     });
 
     describe('main()', () => {
-        it('main throws an error when the microservice is set incorrectly', async () => {
+        it('main() throws an error when the microservice is set incorrectly', async () => {
             config.config.MICROSERVICE.MODE = 'UNKNOWN';
             await main()
                 .then(() => {
@@ -39,11 +39,18 @@ describe('index', () => {
                     expect(error.message).to.equal('ENVIRONMENT_MICROSERVICE_MISSING');
                 });
         });
-
-        it('main creates a login server on the happy path', async () => {
+        it('main() creates a login server on the happy path', async () => {
             config.config.MICROSERVICE.MODE = 'LOGIN';
             await main();
             expect(expressFactory2ListenStub).to.have.callCount(1);
+        });
+        it('main() throws an error with an invalid configuration', async () => {
+            try {
+                await main('FAKE_MODE');
+                assert.fail('FAKE_MODE should have caused an error.');
+            } catch (error) {
+                expect(error.message).to.equal('ENVIRONMENT_MICROSERVICE_MISSING');
+            }
         });
     });
 });
