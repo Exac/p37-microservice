@@ -1,7 +1,13 @@
 language: nodejs
 
+node_js:
+  - 11
+
+install:
+  - npm install
+
 before_script:
-  - npm run compile:install
+  - npm run compile
 
 script:
   - npm run test
