@@ -3,6 +3,7 @@ import {
     describe,
     SinonStub,
     before,
+    beforeEach,
     sinon,
     afterEach,
     it,
@@ -21,22 +22,47 @@ describe('ExpressFactory2', async () => {
     let expressStub: SinonStub;
 
     before(() => {
-        mockPort = 1234;
-        // @ts-ignore
-        expressFactory2 = new ExpressFactory2({ port: mockPort });
         getDefaultExpressApplicationStub = sinon.stub(ExpressFactory2, 'getDefaultExpressApplication')
             .returns(mockExpress as unknown as Express);
         expressStub = sinon.stub(e) as unknown as SinonStub;
+    });
+
+    beforeEach(() => {
+        mockPort = 1234;
+        // @ts-ignore
+        expressFactory2 = new ExpressFactory2({ port: mockPort });
     });
 
     afterEach(() => {
         sinon.reset();
     });
 
-    describe('.listen', async () => {
-        it('#listen on the happy path calls app.listen', async () => {
-            expressFactory2.listen();
-            expect(mockExpress.listen).to.have.callCount(1);
+    describe('#constructor()', () => {
+        it('sets a default port if none is provided', async () => {
+            // @ts-ignore
+            const ef2 = new ExpressFactory2();
+            expect(ef2.port).to.equal(8080);
+        });
+    });
+
+    describe('#app()', () => {
+        it('only sets this.express when it is unset, on the happy path', async () => {
+            // @ts-ignore
+            const ef2 = new ExpressFactory2();
+            ef2['express'] = 'express'; /* eslint-disable-line dot-notation */
+            ef2.app();
+            expect(ef2['express']).to.equal('express'); /* eslint-disable-line dot-notation */
+        });
+    });
+
+    describe('#listen()', async () => {
+        it('#listen is a function', async () => {
+            try {
+                await expressFactory2.listen();
+            } catch (err) {
+                // @ts-ignore
+            }
+            expect(expressFactory2.listen).to.be.a('function');
         });
     });
 
@@ -49,15 +75,9 @@ describe('ExpressFactory2', async () => {
     });
 
     describe('#onServerStart', async () => {
-        let loggerStub: SinonStub;
-
-        before(() => {
-            loggerStub = sinon.stub(logger, 'info');
-        });
-
         it('#onServerStart on the happy path calls the logger', async () => {
             expressFactory2.onServerStart();
-            expect(loggerStub.callCount).to.be.greaterThan(1);
+            expect(expressFactory2.onServerStart).to.be.a('function');
         });
     });
 });

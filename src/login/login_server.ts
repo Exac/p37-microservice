@@ -17,11 +17,6 @@ export class LoginServer extends ExpressFactory2 {
         logger.info(`LoginServer.constructor config=${JSON.stringify(config)} port=${this.port}`);
     }
 
-    public app(): Express {
-        logger.info(`LoginServer.app name=${this.name}`);
-        return super.app();
-    }
-
     public async listen() {
         await super.listen();
         logger.info(`LoginServer.listen name=${this.name} port=${this.port}`);
