@@ -10,6 +10,7 @@
     "start:watch": "tsnd --respawn --transpileOnly src/index.ts",
     "start": "npm run start:watch",
     "compile": "tsc",
+    "compile:install": "npm i && tsc",
     "compile:watch": "tsc -w",
     "lint": "tsc --noEmit && eslint src/**/*.ts --quiet --fix",
     "config": "node-config-ts"
