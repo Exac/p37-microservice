@@ -2,7 +2,7 @@
   "name": "frontend2",
   "version": "1.0.0",
   "description": "Frontend",
-  "main": "index.js",
+  "main": "./dist/src/index.js",
   "scripts": {
     "test": "nyc mocha --exit",
     "test:watch": "nyc mocha --watch",

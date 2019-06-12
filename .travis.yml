@@ -1,0 +1,14 @@
+language: nodejs
+
+before_script:
+  - npm run compile
+
+script:
+  - npm run test
+
+deploy:
+  - provider: script
+    script: bash scripts/deploy_travis_ci.sh
+    github_token: $GITHUB_TOKEN
+    on:
+      branch: master
