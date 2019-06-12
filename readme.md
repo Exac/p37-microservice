@@ -1,5 +1,8 @@
 # Microservice
 
+![Travis (.org) branch](https://img.shields.io/travis/exac/p37-microservice/master.svg)
+![Travis (.org)](https://img.shields.io/travis/exac/p37-microservice.svg?label=latest%20PR%20build)
+
 ## Scripts
 
 #### Install & generate config typings
