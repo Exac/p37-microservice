@@ -1,6 +1,5 @@
 /* eslint-disable import/prefer-default-export */
 import { config } from 'node-config-ts';
-import { ExpressFactory2 } from './shared/express_factory_2';
 import logger from './shared/logger';
 import { MicroserviceMode } from './types';
 import { LoginServer } from './login/login_server';
@@ -30,6 +29,7 @@ export const main = async (mode: string = config.MICROSERVICE.MODE): Promise<voi
     }
 };
 
+/* istanbul ignore if */
 if (process.env.NODE_ENV !== 'test') {
     main()
         .catch((error: unknown) => {
